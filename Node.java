@@ -9,9 +9,7 @@
 
 /**
  * Class for internal organization of a Neural Network.
- * There are 5 types of nodes. Check the type attribute of the node for details
- * 
- * Do not modify. 
+ * There are 5 types of nodes.
  */
 
 
@@ -19,14 +17,14 @@ import java.util.*;
 
 public class Node
 {
-	private int type = 0; //0=input,1=biasToHidden,2=hidden,3=biasToOutput,4=Output
-	public ArrayList<NodeWeightPair> parents = null; //Array List that will contain the parents (including the bias node) with weights if applicable
+	private int type = 0; // 0 = input, 1 = biasToHidden, 2 = hidden, 3 = biasToOutput, 4 =Output
+	public ArrayList<NodeWeightPair> parents = null; // Array List that will contain the parents (including the bias node) with weights if applicable
 		 
 	private Double inputValue = 0.0;
 	private Double outputValue = 0.0;
 	private Double sum = 0.0; // sum of wi*xi
 	
-	//Create a node with a specific type
+	// Create a node with a specific type
 	public Node(int type) {
 		if(type > 4 || type < 0) 
 		{
@@ -34,16 +32,22 @@ public class Node
 			System.exit(1);
 		}
 		else
+		{
 			this.type=type;
+		}
 		if (type == 2 || type == 4)
+		{
 			parents = new ArrayList<NodeWeightPair>();
+		}
 	}
 	
-	//For an input node sets the input value which will be the value of a particular attribute
+	// For an input node sets the input value which will be the value of a particular attribute
 	public void setInput(Double inputValue)
 	{
-		if(type == 0)//If input node
+		if(type == 0) // If input node
+		{
 			this.inputValue=inputValue;
+		}
 	}
 	
 	/**
@@ -57,8 +61,10 @@ public class Node
 		if(type == 2 || type == 4)	
 		{ //Not an input or bias node
 			sum = 0.0;
-			for (int i = 0; i < parents.size(); i++)
+			for (int i = 0; i < parents.size(); i++) 
+			{
 				sum += parents.get(i).weight * parents.get(i).node.getOutput();
+			}
 			outputValue = Math.max(0.0, sum);
 		}
 	}
@@ -68,15 +74,21 @@ public class Node
 		return sum;
 	}
 	
-	//Gets the output value
+	// Gets the output value
 	public double getOutput()
 	{
-		if (type == 0) //Input node
+		if (type == 0) // Input node
+		{
 			return inputValue;
-		else if (type == 1 || type == 3) //Bias node
+		}
+		else if (type == 1 || type == 3) // Bias node
+		{
 			return 1.00;
+		}
 		else
+		{
 			return outputValue;
+		}
 	}
 }
 

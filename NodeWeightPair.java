@@ -9,8 +9,7 @@
 
 
 /**
- * Class to identify connections
- * between different layers.
+ * Class to identify connections between different layers.
  */
 
 public class NodeWeightPair
