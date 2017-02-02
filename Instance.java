@@ -8,6 +8,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 import java.util.*;
+
 /**
  * Holds data for a particular instance. Attributes are represented as an 
  * ArrayList of Doubles. Class labels are represented as an ArrayList of 
